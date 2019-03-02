@@ -133,12 +133,14 @@ def evaluate_model(model, X_test, Y_test, category_names):
         for classifier in range(0,y_pred.shape[1]):
             print('Classifier: '+Y_names[classifier])
             target_names = ['class 0', 'class 1','class 2']
-            print(classification_report(Y_test[:,classifier], y_pred[:,classifier],target_names=target_names))
+            #target_names = ['class 0', 'class 1']
+            print(classification_report(Y_test[:,classifier], y_pred[:,classifier],target_names=target_names[0:Y_test[:,classifier].max()+1]))
 
         accuracy = (y_pred == Y_test).mean()
         print('\n Total Accuracy:', accuracy)
 
     y_pred = model.predict(X_test)
+    pdb.set_trace()
     print_classification_report(y_pred, category_names)
 
 

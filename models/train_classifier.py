@@ -1,21 +1,21 @@
 # set base path
-path='/Users/bernd/Documents/Codes/Python/Course_Udacity_Data_Scientist/05_Data_Engineering/Git_develop2/'
+#path='/Users/bernd/Documents/Codes/Python/Course_Udacity_Data_Scientist/05_Data_Engineering/Git_develop2/'
+path='/home/bernd/Documents/Python/Udacity_Data_Scientist/05_Emergency_Response/Disaster_Response_Pipelines/'
 
 
 # import libraries
 import pdb
 
 import pandas as pd
-import re
 from sqlalchemy import create_engine
 
 from nltk.tokenize import word_tokenize
 import nltk
-#nltk.download('punkt')
-import nltk.tokenize.punkt
-#nltk.download('wordnet')
-from nltk.corpus import wordnet
-#nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt')
+#import nltk.tokenize.punkt
+nltk.download('wordnet')
+#from nltk.corpus import wordnet
+nltk.download('averaged_perceptron_tagger')
 import sys
 import re
 
@@ -69,11 +69,23 @@ def load_data(database_filepath):
     df = pd.read_sql("SELECT * FROM InsertTableName", con=engine)
 
     # prepare
+    # X
     X = df.message.values
-    Y = df.drop(['id','message','original','genre'], axis=1).values
-    Y_names=list(df.drop(['id','message','original','genre'], axis=1))
+
+    # Y
+    # inititalize Y
+    Y_df = df.drop(['id', 'message', 'original', 'genre'], axis=1)
+    # additionally cleanse values from Y which do not contain at least two class values
+    drop_col = list(Y_df.columns[Y_df.nunique() < 2])
+    # drop additional columns from data frame
+    Y_df2 = Y_df.drop(drop_col, axis=1)
+    # Save column names
+    Y_names = list(Y_df2.columns)
+    # convert to array
+    Y = Y_df2.values
 
     return X, Y, Y_names
+
 
 
 def tokenize(text):
@@ -152,8 +164,6 @@ def main():
         
         print('Building model...')
         model = build_model()
-
-        pdb.set_trace()
 
         print('Training model...')
         model.fit(X_train, Y_train)

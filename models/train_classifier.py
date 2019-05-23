@@ -1,6 +1,8 @@
 # set base path
 #path='/Users/bernd/Documents/Codes/Python/Course_Udacity_Data_Scientist/05_Data_Engineering/Git_develop2/'
-path='/home/bernd/Documents/Python/Udacity_Data_Scientist/05_Emergency_Response/Disaster_Response_Pipelines/'
+#path='/home/bernd/Documents/Python/Udacity_Data_Scientist/05_Emergency_Response/Disaster_Response_Pipelines/'
+# path linux
+path='/home/bernd/Documents/Python/Disaster_Response_Pipelines/'
 
 
 # import libraries

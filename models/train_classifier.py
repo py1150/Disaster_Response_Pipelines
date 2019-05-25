@@ -142,7 +142,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
         print('\n Total Accuracy:', accuracy)
 
     y_pred = model.predict(X_test)
-    pdb.set_trace()
+    #pdb.set_trace()
     print_classification_report(y_pred, category_names)
 
 

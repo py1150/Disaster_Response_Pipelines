@@ -4,6 +4,8 @@ The Repository contains all files to run the Disaster Response classification as
 
 Execution
 ---------
+In order to execute the web app, the steps described below have to be run in the following order:
+
 - 1. Data/process_data.py
 	prepares the necessary data
 	Input: 2 csv-files (see example execution below)

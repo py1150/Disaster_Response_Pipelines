@@ -1,4 +1,6 @@
 # Disaster_Response_Pipelines
+(edit file mode displays improved format)
+
 The Repository contains all files to run the Disaster Response classification as a web app.
 
 

@@ -1,9 +1,6 @@
 # Disaster_Response_Pipelines
 The Repository contains all files to run the Disaster Response classification as a web app.
 
-General Information
--------------------
-/project_path.../home/bernd/Documents/Python/Disaster_Response_Pipelines/
 
 Execution
 ---------
